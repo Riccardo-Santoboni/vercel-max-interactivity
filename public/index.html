@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Interattività Max</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>Invia un messaggio a Max</h1>
+    <button onclick="sendMsg('ciao')">Ciao</button>
+    <button onclick="sendMsg('avvia')">Avvia</button>
+
+    <script>
+      function sendMsg(msg) {
+        fetch(`/send/${msg}`).then(res => res.text()).then(alert);
+      }
+    </script>
+  </body>
+</html>

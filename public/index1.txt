@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interactive Opera Control</title>
+</head>
+<body style="font-family:sans-serif; text-align:center; padding:40px;">
+  <h1>Interactive Opera</h1>
+  <p>Press a button to send a command to Max.</p>
+  <button onclick="sendToMax('startRebellion')">Start Rebellion</button>
+  <button onclick="sendToMax('stopRebellion')">Stop Rebellion</button>
+
+  <script>
+    async function sendToMax(command) {
+      const res = await fetch('/api/toMax', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cmd: command }),
+      });
+      const data = await res.json();
+      alert('Response from Max: ' + data.status);
+    }
+  </script>
+</body>
+</html>
